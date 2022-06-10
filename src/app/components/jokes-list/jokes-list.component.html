@@ -1,0 +1,27 @@
+<h3>Jokes</h3>
+<p>
+  Refresh Jokes <i (click)="refreshAllJokesClicked()" class="material-icons">refresh</i>
+</p>
+
+<ul>
+  <li *ngFor="let joke of jokes$ | async; let i=index">
+
+    <p>{{joke.joke}}</p> <span (click)="refreshJoke(i)" class="material-icons">refresh</span>
+
+    <span *ngIf="joke.political" class="material-icons">church</span>
+    <span *ngIf="joke.racist" class="material-icons">supervisoraccount</span>
+    <span *ngIf="joke.sexist" class="material-icons">wc</span>
+    <span *ngIf="joke.explicit" class="material-icons">explicit</span>
+
+    <i *ngIf="joke.isLiked" class="material-icons">thumb_up</i>
+    <i (click)="likeJoke(joke)" *ngIf="!joke.isDisliked && !joke.isLiked"
+      class="material-icons">thumb_up_alt_two_tone</i>
+
+    <i *ngIf="joke.isDisliked" class="material-icons">thumb_down</i>
+    <i (click)="dislikeJoke(joke)" *ngIf="!joke.isDisliked && !joke.isLiked"
+      class="material-icons">thumb_down_alt_two_tone</i>
+
+
+
+  </li>
+</ul>
